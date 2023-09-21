@@ -8,7 +8,7 @@
     "start": "node ."
   },
   "bin": {
-    "hello": "./index.js"
+    "generate-fonts": "./index.js"
   },
   "license": "ISC",
   "dependencies": {
