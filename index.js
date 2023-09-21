@@ -4,6 +4,8 @@ const fs = require("fs");
 const { glob } = require("glob");
 const { join } = require("path");
 
+console.log("ARGWW", process.argv)
+
 const fontsFolder = process.argv[2] || ".";
 const outputFolder = process.argv[3] || ".";
 const fontFaceBaseUrl = process.argv[4] || "/fonts";
