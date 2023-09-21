@@ -1,0 +1,17 @@
+{
+  "name": "generate-fonts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "author": "QuartoRaggio",
+  "scripts": {
+    "start": "node ."
+  },
+  "bin": {
+    "hello": "./index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^10.2.7"
+  }
+}
