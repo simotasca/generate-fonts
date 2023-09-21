@@ -4,13 +4,17 @@ const fs = require("fs");
 const { glob } = require("glob");
 const { join } = require("path");
 
-const fontsFolder = join(process.cwd(), "fonts");
-const fontFaceBaseUrl = "/fonts";
+const fontsFolder = process.argv[2] || ".";
+const outputFolder = process.argv[3] || ".";
+const fontFaceBaseUrl = process.argv[4] || "/fonts";
 
 glob(join(fontsFolder, "/**/*"), { nodir: true }).then((matches) => {
   const fontFaces = matches.map(m => m.replace(fontsFolder, "")).map(match => {
-    const fileFolder = match.slice(0, match.lastIndexOf("/"));
+    let fileFolder = match.slice(0, match.lastIndexOf("/"));
+    fileFolder = fileFolder.slice(fileFolder.lastIndexOf("/") + 1);
     if (fileFolder.startsWith("/_")) return "";
+
+    console.log(fileFolder);
 
     let fileName = match.slice(match.lastIndexOf("/") + 1);
     const extension = fileName.slice(fileName.lastIndexOf("."));
@@ -61,6 +65,10 @@ glob(join(fontsFolder, "/**/*"), { nodir: true }).then((matches) => {
     return fontFace;
   });
 
-  if (fs.existsSync("./fonts.css")) fs.rmSync("./fonts.css");
-  fs.writeFileSync("./fonts.css", fontFaces.join(""));
+
+  if (!fs.existsSync(outputFolder)) fs.mkdirSync(outputFolder, { recursive: true });
+
+  let outputFile = join(outputFolder, "fonts.css");
+  if (fs.existsSync(outputFile)) fs.rmSync(outputFile);
+  fs.writeFileSync(outputFile, fontFaces.join(""));
 });
