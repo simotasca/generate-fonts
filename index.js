@@ -51,12 +51,12 @@ glob(join(fontsFolder, "/**/*"), { nodir: true }).then((matches) => {
     }
 
     const fontFace = `
-      @font-face {
-        font-family: "${family}";
-        src: url("${fontFaceBaseUrl + fileFolder}/${fileName + extension}");
-        font-weight: ${weight};
-        font-style: ${italic ? "italic" : "normal"};
-      }`;
+@font-face {
+  font-family: "${family}";
+  src: url("${fontFaceBaseUrl + fileFolder}/${fileName + extension}");
+  font-weight: ${weight};
+  font-style: ${italic ? "italic" : "normal"};
+}`;
 
     return fontFace;
   });
