@@ -23,7 +23,7 @@ glob(join(fontsFolder, "/**/*.{ttf,otf}"), { nodir: true }).then((matches) => {
     stringWeight = stringWeight.replace("Italic", "") || "Regular";
     let weight = 400;
 
-    switch (weight) {
+    switch (stringWeight) {
       case "Thin":
         weight = 100;
         break;
