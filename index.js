@@ -58,7 +58,7 @@ glob(join(fontsFolder, "/**/*.{ttf,otf}"), { nodir: true }).then((matches) => {
     const fontFace = `
 @font-face {
   font-family: "${family}";
-  src: url("${join(fontFaceBaseUrl, fileFolder, fileName + extension)}");
+  src: url("${join(fontFaceBaseUrl, fileFolder, fileName + "." + extension)}");
   font-weight: ${weight};
   font-style: ${italic ? "italic" : "normal"};
 }`;
