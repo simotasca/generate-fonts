@@ -19,8 +19,10 @@ glob(join(fontsFolder, "/**/*.{ttf,otf}"), { nodir: true }).then((matches) => {
     fileName = fileName.replace(extension, "");
 
     let [family, stringWeight] = fileName.split("-");
-    let italic = stringWeight.endsWith("Italic");
-    stringWeight = stringWeight.replace("Italic", "") || "Regular";
+    let italic = stringWeight.endsWith("Italic") || stringWeight.endsWith("Oblique");
+    stringWeight = stringWeight.replace("Italic", "");
+    stringWeight = stringWeight.replace("Oblique", "");
+    stringWeight = stringWeight || "Regular"
     let weight = 400;
 
     switch (stringWeight) {
